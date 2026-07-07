@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Приглашение на день рождения</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            /* Указываем имя вашего файла картинки */
+            background-image: url('fon.avif'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding-top: 100px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        #cake {
+            font-size: 80px;
+            margin-top: 30px;
+            display: none; /* Скрыт до нажатия */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Приглашаем вас на день рождения!</h1>
+    <p>Нажмите если согласны прийти</p>
+    
+    <button onclick="celebrate()">СОГЛАСНА</button>
+
+    <audio id="firework-sound" src="zvuk-hlopushki.mp3"></audio>
+
+    <div id="cake">🎂 🎉</div>
+
+    <script>
+        function celebrate() {
+            // 1. Запуск звука
+            const audio = document.getElementById('firework-sound');
+            audio.play();
+
+            // 2. Запуск конфетти с двух сторон
+            confetti({ particleCount: 150, spread: 70, origin: { x: 0, y: 0.6 } });
+            confetti({ particleCount: 150, spread: 70, origin: { x: 1, y: 0.6 } });
+
+            // 3. Показываем торт
+            document.getElementById('cake').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
